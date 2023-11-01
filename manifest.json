@@ -4,7 +4,14 @@
     "version": "1.0",
     "description": "Turns Indian newspaper headlines into mini rhymes",
     "permissions": ["activeTab"],
-    "action": {"default_popup": "popup.html"},
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "ink pen1.png",
+        "48": "ink pen1.png", 
+        "128": "ink pen1.png" 
+      }
+  },
     "content_scripts": [
       {
         "matches": ["https://www.hindustantimes.com/"],
