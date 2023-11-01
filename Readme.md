@@ -1,8 +1,8 @@
-# Chrome Extension: Indian Newspaper Headline Rhyming
+# Chrome Extension: Bard's ink
 
 ## Overview
 
-The "Badrd's ink" is a Chrome extension that transforms major headlines on Indian newspaper website - "Hindustan times" into mini rhymes. These rhymes are generated based on the original headline text, adding a creative twist to news reading. This README provides detailed information about the extension, including its purpose, installation, usage, contributing guidelines, and license.
+The "Badrd's ink" is a Chrome extension that transforms headlines of "Hindustan times" into mini rhymes. These rhymes are generated based on the original headline text, adding a creative twist to news reading. This README provides detailed information about the extension, including its purpose, installation, usage, contributing guidelines, and license.
 
 ## Table of Contents
 
