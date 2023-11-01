@@ -1,10 +1,10 @@
-const h3Elements = document.querySelectorAll("h3.hdg3 a");
+const h3Elements = document.querySelectorAll("h3.hdg3 a"); // Selecting <a> tag child of <h3 class = "hdg3">
 
-h3Elements.forEach(async(h3Element) => {
+h3Elements.forEach(async(h3Element) => { // Loop to go through each element and make api call 
   const heading = h3Element.innerText;
     
-    const rhyme = await fetchRhyme(heading);
-    h3Element.innerText = rhyme; // Replace with the desired text
+    const rhyme = await fetchRhyme(heading);// Api call 
+    h3Element.innerText = rhyme; 
   
 });
  
@@ -31,8 +31,8 @@ async function fetchRhyme(heading) {
 
     const data = await response.json();
     // Extract and use the generated text from the response
-    if (data.results && data.results.length > 0) {
-      const generatedText = data.results[0].generated_text;
+    if (data.results && data.results.length > 0) { // checking if response contains data
+      const generatedText = data.results[0].generated_text; 
       console.log("Generated Text:", generatedText);
       return generatedText;
     } else {
@@ -40,7 +40,7 @@ async function fetchRhyme(heading) {
     }
   } catch (error) {
     console.error("Error fetching rhymes:", error);
-    // Handle the error as needed
+    
   }
 }
 

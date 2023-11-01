@@ -2,8 +2,8 @@
     "manifest_version": 3,
     "name": "Bard's Ink",
     "version": "1.0",
-    "description": "Turns Indian newspaper headlines into mini rhymes",
-    "permissions": ["activeTab"],
+    "description": "Turns HidustanTimes website's headlines into mini rhymes",
+    "permissions": ["activeTab"], 
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
