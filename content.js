@@ -20,7 +20,7 @@ async function fetchRhyme(heading) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer HIUBK9ySpRj81TkFGFbmuLncbPVacoU2",
+        "Authorization": "{your deepinfra auth key here}"
       },
       body: JSON.stringify(requestData),
     });
