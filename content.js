@@ -1,46 +1,38 @@
 const h3Elements = document.querySelectorAll("h3.hdg3 a"); // Selecting <a> tag child of <h3 class = "hdg3">
 
-h3Elements.forEach(async(h3Element) => { // Loop to go through each element and make api call 
-  const heading = h3Element.innerText;
-    
-    const rhyme = await fetchRhyme(heading);// Api call 
-    h3Element.innerText = rhyme; 
-  
-});
- 
-async function fetchRhyme(heading) {
-  try {
-    // Prepare the data for the API request
-    const requestData = {
-      input: `[INST] <<SYS>> you are a writer who converts every statement into a short rhyme <<SYS>> ${heading} [/INST]`,
-    };
+const headlineArray = [];
+h3Elements.forEach((h3Element) => { // Loop to go through ech element and map text inside them to an array
+  headlineArray.push(h3Element.innerText);
+    });
 
-    // Make the API request using node-fetch
-    const response = await fetch("https://api.deepinfra.com/v1/inference/meta-llama/Llama-2-70b-chat-hf", {
+   console.log("headlineArray",headlineArray) 
+ async function fetchRhymes(headlineArray) {
+  try {
+   
+   // Make the API request using node-fetch
+    const response = await fetch("http://localhost:3000/api/get-rhymes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "{your deepinfra auth key here}"
-      },
-      body: JSON.stringify(requestData),
+        },
+      body: JSON.stringify(headlineArray),
     });
-
     if (!response.ok) {
-      throw new Error("Failed to fetch rhymes from the API");
+      throw new Error(`Failed to fetch rhymes. Status: ${response.status}`);
+    } 
+    const extensionRhymeData = await response.json();
+    console.log("Headlines fetched, updating dom....",extensionRhymeData)
+  // Update DOM after all API calls are complete
+  
+   for (let i = 0; i < h3Elements.length; i++) {
+    h3Elements[i].innerText = extensionRhymeData[i].data;
     }
-
-    const data = await response.json();
-    // Extract and use the generated text from the response
-    if (data.results && data.results.length > 0) { // checking if response contains data
-      const generatedText = data.results[0].generated_text; 
-      console.log("Generated Text:", generatedText);
-      return generatedText;
-    } else {
-      throw new Error("No generated text found in API response");
-    }
+  
+    console.log("Dom updated....")
+    
   } catch (error) {
     console.error("Error fetching rhymes:", error);
     
   }
 }
-
+Promise.all([fetchRhymes(headlineArray)]);
