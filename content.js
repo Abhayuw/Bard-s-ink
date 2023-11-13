@@ -10,7 +10,8 @@ h3Elements.forEach((h3Element) => { // Loop to go through ech element and map te
   try {
    
    // Make the API request using node-fetch
-    const response = await fetch("http://localhost:3000/api/get-rhymes", {
+   // Update the url to local host to run it locally
+    const response = await fetch("https://bard-s-ink-server.vercel.app/api/get-rhymes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
